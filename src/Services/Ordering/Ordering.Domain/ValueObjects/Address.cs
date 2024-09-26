@@ -5,7 +5,7 @@ public record Address
 
     public string LastName { get; private set; } = default!;
 
-    public string Email { get; private set; } = default!;
+    public string EmailAddress { get; private set; } = default!;
 
     public string AddressLine { get; private set; } = default!;
 
@@ -20,11 +20,11 @@ public record Address
         
     }
 
-    private Address(string firstName, string lastName, string email, string addressLine, string country, string state, string zipCode)
+    private Address(string firstName, string lastName, string emailAddress, string addressLine, string country, string state, string zipCode)
     {
         FirstName = firstName;
         LastName = lastName;
-        Email = email;
+        EmailAddress = emailAddress;
         AddressLine = addressLine;
         Country = country;
         State = state;
