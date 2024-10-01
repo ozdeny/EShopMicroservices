@@ -63,7 +63,7 @@ public class Order : Aggregate<OrderId>
         return order;
     }
 
-    public void Update(CustomerId customerId, OrderName orderName, Address shippingAddress,
+    public void Update(OrderName orderName, Address shippingAddress,
         Address billingAddress, Payment payment, OrderStatus status)
     {
         OrderName = orderName;
