@@ -20,6 +20,6 @@ public class GetOrdersHandler(IApplicationDbContext dbContext): IQueryHandler<Ge
             .Skip(pageSize * pageIndex).Take(pageSize).ToListAsync(cancellationToken);
 
 
-        return GetOrdersResult(new PaginatedResult<OrderDto>(pageIndex, pageSize, totalCount, orders.ToOrderDtoList()));
+        return new GetOrdersResult(new PaginatedResult<OrderDto>(pageIndex, pageSize, totalCount, orders.ToOrderDtoList()));
     }
 }

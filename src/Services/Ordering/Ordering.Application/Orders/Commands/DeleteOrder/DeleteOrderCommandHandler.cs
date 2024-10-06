@@ -13,10 +13,16 @@ public class DeleteOrderCommandHandler(IApplicationDbContext dbContext): IComman
         var orderId = OrderId.Of(command.OrderId);
         var order = await dbContext.Orders.FindAsync([orderId], cancellationToken: cancellationToken);
 
+    
+
         if (order is null)
         {
             throw new OrderNotFoundException(command.OrderId);
         }
+
+        dbContext.Orders.Remove(order);
+
+        dbContext.SaveChangesAsync(cancellationToken);
 
         return new DeleteOrderResult(true);
     }
