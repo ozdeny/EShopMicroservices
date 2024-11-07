@@ -1,39 +1,46 @@
 version: '3.4'
 
 services:
-   catalogdb:
+  catalogdb:
     image: postgres
 
-   basketdb:
+  basketdb:
     image: postgres
    
-   catalog.api:
+  catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
       dockerfile: Services/Catalog/Catalog.API/Dockerfile
    
-   distributedcache:
+  distributedcache:
     image: redis
 
-   orderdb:
+  orderdb:
     image: mcr.microsoft.com/mssql/server
 
-   messagebroker: 
+  messagebroker: 
     image: rabbitmq:management
    
-   basket.api:
+  basket.api:
     image: ${DOCKER_REGISTRY-}basketapi
     build:
       context: .
       dockerfile: Services/Basket/Basket.API/Dockerfile
-   discount.grpc:
+  discount.grpc:
     image: ${DOCKER_REGISTRY-}discountgrpc
     build:
       context: .
       dockerfile: Services/Discount/Discount.Grpc/Dockerfile
 
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}orderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
+
 volumes:
     postgres_catalog: 
     postgres_basket:
+
 
